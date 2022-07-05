@@ -3,7 +3,7 @@ package provider.data;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import provider.data.po.EchoInfo;
+import provider.data.po.EchoPO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,17 +13,17 @@ import static org.junit.jupiter.api.Assertions.*;
  * description :
  */
 @SpringBootTest
-class EchoInfoRepositoryTest {
+class EchoRepositoryTest {
 
     @Autowired
-    EchoInfoRepository echoInfoRepository;
+    EchoRepository echoRepository;
 
     @Test
     void saveEchoInfo() {
-        final EchoInfo info = new EchoInfo();
+        final EchoPO info = new EchoPO();
         info.setInfo("first");
-        EchoInfo savedEchoInfo = echoInfoRepository.save(info);
-        System.out.println(savedEchoInfo);
-        assertEquals(info.getInfo(), savedEchoInfo.getInfo());
+        EchoPO savedEcho = echoRepository.save(info);
+        System.out.println(savedEcho);
+        assertEquals(info.getInfo(), savedEcho.getInfo());
     }
 }

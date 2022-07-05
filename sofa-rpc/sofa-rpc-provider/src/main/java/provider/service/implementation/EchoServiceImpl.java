@@ -1,10 +1,11 @@
 package provider.service.implementation;
 
 import com.alipay.sofa.runtime.api.annotation.SofaService;
+import com.alipay.sofa.runtime.api.annotation.SofaServiceBinding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import provider.data.EchoInfoRepository;
-import provider.data.po.EchoInfo;
+import provider.data.EchoRepository;
+import provider.data.po.EchoPO;
 import provider.service.EchoService;
 
 /**
@@ -12,20 +13,23 @@ import provider.service.EchoService;
  * date : 2022/7/4 17:02
  * description :
  */
-@SofaService(uniqueId = "echo")
+@SofaService(uniqueId = "echo", bindings = {@SofaServiceBinding(bindingType = "bolt")})
 @Service("echoService")
 public class EchoServiceImpl implements EchoService {
 
     @Autowired
-    EchoInfoRepository repository;
+    EchoRepository repository;
 
     @Override
     public String saySomething(String saying) {
-        return saying;
+        final EchoPO po = new EchoPO();
+        po.setInfo(saying);
+        return repository.save(po).getInfo();
     }
 
     @Override
     public String reEcho(Long id) {
         return repository.findById(id).get().getInfo();
     }
+
 }

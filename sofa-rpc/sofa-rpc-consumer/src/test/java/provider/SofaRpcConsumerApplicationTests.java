@@ -19,7 +19,7 @@ class SofaRpcConsumerApplicationTests {
 
 	@Test
 	void testEcho() {
-		assertEquals("hello", echoService.saySomething("hello"));
+		assertEquals("some", echoService.saySomething("some"));
 	}
 
 }

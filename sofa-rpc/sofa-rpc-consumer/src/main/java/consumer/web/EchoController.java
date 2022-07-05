@@ -1,6 +1,7 @@
 package consumer.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.alipay.sofa.runtime.api.annotation.SofaReference;
+import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
 import org.springframework.web.bind.annotation.*;
 import provider.service.EchoService;
 
@@ -12,12 +13,12 @@ import provider.service.EchoService;
 @RequestMapping("/echo")
 public class EchoController {
 
-    @Autowired
-    EchoService echoService;
+    @SofaReference(uniqueId = "echo", binding = @SofaReferenceBinding(bindingType = "bolt"))
+    private EchoService echoService;
 
-    @GetMapping()
-    public String echo() {
-        return echoService.saySomething("hello sofa");
+    @PostMapping()
+    public String echo(@RequestParam(value = "saying") String saying) {
+        return echoService.saySomething(saying);
     }
 
     @GetMapping("/{id}")

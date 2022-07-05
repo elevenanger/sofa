@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * author : liuanglin
  * date : 2022/7/4 19:23
- * description :
  */
 @SpringBootTest
 class EchoServiceTest {

@@ -1,11 +1,11 @@
 package provider.data;
 
 import org.springframework.data.repository.CrudRepository;
-import provider.data.po.EchoInfo;
+import provider.data.po.EchoPO;
 
 /**
  * author : liuanglin
  * date : 2022/7/4 18:59
  * description :
  */
-public interface EchoInfoRepository extends CrudRepository<EchoInfo, Long> {}
+public interface EchoRepository extends CrudRepository<EchoPO, Long> {}
